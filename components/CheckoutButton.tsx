@@ -2,6 +2,11 @@
 
 import { useState } from "react";
 
+/** CONTROL-minted test Payment Link — interim until Vercel has sk_test_ for Checkout Sessions */
+const FALLBACK_PAYMENT_LINK =
+  process.env.NEXT_PUBLIC_STRIPE_PAYMENT_LINK ||
+  "https://buy.stripe.com/test_fZu4gz8d7fPUgpagIJcAo06";
+
 export default function CheckoutButton({
   children = "Lock founder price — $190/yr",
   className = "",
@@ -18,15 +23,14 @@ export default function CheckoutButton({
     try {
       const res = await fetch("/api/checkout", { method: "POST" });
       const data = (await res.json()) as { url?: string; error?: string };
-      if (!res.ok || !data.url) {
-        setError(data.error || "Could not start checkout.");
-        setLoading(false);
+      if (res.ok && data.url) {
+        window.location.href = data.url;
         return;
       }
-      window.location.href = data.url;
+      // No sk_test_ on Vercel yet — fall back to CONTROL Payment Link (test)
+      window.location.href = FALLBACK_PAYMENT_LINK;
     } catch {
-      setError("Network error. Try again.");
-      setLoading(false);
+      window.location.href = FALLBACK_PAYMENT_LINK;
     }
   }
 
