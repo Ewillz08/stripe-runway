@@ -34,9 +34,10 @@ Open [http://localhost:3000](http://localhost:3000).
 
 | Variable | Required | Notes |
 |---|---|---|
-| `STRIPE_SECRET_KEY` | Yes (Checkout) | **Test mode** `sk_test_…` only |
+| `STRIPE_SECRET_KEY` | Yes (Checkout) | **Test mode** `sk_test_…` only (Bond test) |
 | `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` | Optional for this landing | `pk_test_…` for future client Stripe.js |
-| `STRIPE_PRICE_FOUNDING_ANNUAL` | No | Defaults to `price_1UEZusGTDaLsaWdvvifY0LxN` |
+| `STRIPE_PRICE_FOUNDING_ANNUAL` | No | Defaults to `price_1UEfTmGj008bHPz0bzLaw0iF` |
+| `NEXT_PUBLIC_STRIPE_PAYMENT_LINK` | Interim CTA | Falls back if Checkout Session unavailable |
 
 ## Routes
 

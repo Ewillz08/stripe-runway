@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
 
-const DEFAULT_PRICE = "price_1UEZusGTDaLsaWdvvifY0LxN";
+const DEFAULT_PRICE = "price_1UEfTmGj008bHPz0bzLaw0iF";
 
 export async function POST(request: Request) {
   const secret = process.env.STRIPE_SECRET_KEY;
