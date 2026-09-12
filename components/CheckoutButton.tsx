@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 
-/** CONTROL-minted test Payment Link — interim until Vercel has sk_test_ for Checkout Sessions */
+/** CONTROL Bond-test Payment Link — matches Vercel sk_test_ + price_1UEfTmGj008bHPz0bzLaw0iF */
 const FALLBACK_PAYMENT_LINK =
   process.env.NEXT_PUBLIC_STRIPE_PAYMENT_LINK ||
-  "https://buy.stripe.com/test_fZu4gz8d7fPUgpagIJcAo06";
+  "https://buy.stripe.com/test_aFa00jcm3gdo5Ra5dSawo00";
 
 export default function CheckoutButton({
   children = "Lock founder price — $190/yr",
@@ -27,7 +27,7 @@ export default function CheckoutButton({
         window.location.href = data.url;
         return;
       }
-      // No sk_test_ on Vercel yet — fall back to CONTROL Payment Link (test)
+      // Fall back to CONTROL Bond-test Payment Link
       window.location.href = FALLBACK_PAYMENT_LINK;
     } catch {
       window.location.href = FALLBACK_PAYMENT_LINK;
